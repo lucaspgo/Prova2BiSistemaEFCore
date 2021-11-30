@@ -39,8 +39,7 @@ namespace API.Controllers
             venda.FormaPagamento = _context.FormasPagamento.Find(venda.FormaPagamentoId);
             List<ItemVenda> itens = new List<ItemVenda>();
             foreach(ItemVenda itemVenda in venda.Itens){
-                _context.ItensVenda =
-                itens.Add(_context.ItensVenda.Find(itemVenda.ItemVendaId));
+               itens.Add(_context.ItensVenda.Find(itemVenda.ItemVendaId));
             }
             venda.Itens = itens;
             _context.Vendas.Add(venda);
