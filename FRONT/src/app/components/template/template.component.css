@@ -1,0 +1,15 @@
+.content {
+    padding: 16px;
+}
+
+.container {
+    height: calc(100% - 64px);
+}
+
+.sidenav {
+    width: 12vw;
+}
+
+.title {
+    font-size: 1.1em;
+}
