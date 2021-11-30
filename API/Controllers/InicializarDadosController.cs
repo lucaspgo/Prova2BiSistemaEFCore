@@ -19,16 +19,28 @@ namespace API.Controllers
         [Route("create")]
         public IActionResult Create()
         {
-            _context.Categorias.AddRange(new Categoria[]
+            _context.FormasPagamento.AddRange(new FormaPagamento[]
                 {
-                    new Categoria { CategoriaId = 1, Nome = "Categoria 1" },
+                    new FormaPagamento { FormaPagamentoId = 1, Nome = "Cartão", NumParcelas = 1},
+                    new FormaPagamento { FormaPagamentoId = 2, Nome = "Cartão", NumParcelas = 2},
+                    new FormaPagamento { FormaPagamentoId = 3, Nome = "Cartão", NumParcelas = 3},
+                    new FormaPagamento { FormaPagamentoId = 4, Nome = "Cartão", NumParcelas = 4},
+                    new FormaPagamento { FormaPagamentoId = 5, Nome = "Cartão", NumParcelas = 5},
+                    new FormaPagamento { FormaPagamentoId = 6, Nome = "Cartão", NumParcelas = 6},
                 }
             );
+
+            _context.Categorias.AddRange(new Categoria[]
+                {
+                    new Categoria { CategoriaId = 1, Nome = "Banheiro" },
+                }
+            );
+
             _context.Produtos.AddRange(new Produto[]
                 {
-                    new Produto { ProdutoId = 1, Nome = "Produto 1", Preco = 1, Quantidade = 1, CategoriaId = 1 },
-                    new Produto { ProdutoId = 2, Nome = "Produto 2", Preco = 2, Quantidade = 2, CategoriaId = 1 },
-                    new Produto { ProdutoId = 3, Nome = "Produto 3", Preco = 3, Quantidade = 3, CategoriaId = 1 },
+                    new Produto { ProdutoId = 1, Nome = "Pato de Borracha", Preco = 10, Quantidade = 10, CategoriaId = 1 },
+                    new Produto { ProdutoId = 2, Nome = "Sabão", Preco = 4, Quantidade = 30, CategoriaId = 1 },
+                    new Produto { ProdutoId = 3, Nome = "Esponja", Preco = 5, Quantidade = 20, CategoriaId = 1 },
                 }
             );
             _context.SaveChanges();
