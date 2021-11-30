@@ -1,0 +1,34 @@
+<table mat-table [dataSource]="vendas" class="mat-elevation-z8">
+    <!-- Coluna do Id -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let venda">{{ venda.id }}</td>
+    </ng-container>
+    <!-- Coluna do Cliente -->
+    <ng-container matColumnDef="cliente">
+        <th mat-header-cell *matHeaderCellDef>Cliente</th>
+        <td mat-cell *matCellDef="let venda">{{ venda.cliente }}</td>
+    </ng-container>
+    <!-- Coluna do Produto -->
+    <ng-container matColumnDef="itens">
+        <th mat-header-cell *matHeaderCellDef>Itens</th>
+        <td  mat-cell *matCellDef="let venda">
+            <span *ngFor="let item of venda.itens">{{ item.produto.nome }}<br></span>
+        </td>
+    </ng-container>
+    <!-- Coluna da Categoria -->
+    <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef>Categoria</th>
+        <td  mat-cell *matCellDef="let venda">
+            <span *ngFor="let item of venda.itens">{{ item.produto.categoria.nome }}<br></span>
+        </td>
+    </ng-container>
+    <!-- Coluna do Forma de Pagamento -->
+    <ng-container matColumnDef="formaPagamento">
+        <th mat-header-cell *matHeaderCellDef>Forma de Pagamento</th>
+        <td mat-cell *matCellDef="let venda">{{ venda.formaPagamento.nome }} - {{ venda.formaPagamento.numParcelas }}x</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunasExibidas"></tr>
+</table>

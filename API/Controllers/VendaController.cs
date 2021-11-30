@@ -26,7 +26,9 @@ namespace API.Controllers
         {
             return Ok(_context.Vendas
             .Include(x => x.FormaPagamento)
-            .Include(x => x.Itens).ThenInclude(x => x.Produto)
+            .Include(x => x.Itens)
+            .ThenInclude(x => x.Produto)
+            .ThenInclude(x => x.Categoria)
             .AsNoTracking().ToList());
         }
 
@@ -37,6 +39,7 @@ namespace API.Controllers
             venda.FormaPagamento = _context.FormasPagamento.Find(venda.FormaPagamentoId);
             List<ItemVenda> itens = new List<ItemVenda>();
             foreach(ItemVenda itemVenda in venda.Itens){
+                _context.ItensVenda =
                 itens.Add(_context.ItensVenda.Find(itemVenda.ItemVendaId));
             }
             venda.Itens = itens;

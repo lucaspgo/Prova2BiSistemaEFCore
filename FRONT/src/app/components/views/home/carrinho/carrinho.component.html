@@ -37,11 +37,29 @@
             <tr mat-header-row *matHeaderRowDef="colunasExibidas"></tr>
             <tr mat-row *matRowDef="let row; columns: colunasExibidas"></tr>
         </table>
-    </mat-card-content>
 
+        <mat-form-field class="input" id="nome">
+            <mat-label for="nome">Nome Completo:</mat-label>
+            <input matInput type="text" name="nome" [(ngModel)]="cliente"/>
+        </mat-form-field>
+        <mat-form-field class="input" id="formaPagamento">
+            <mat-label for="formaPagamento">Forma de Pagamento:</mat-label>
+            <mat-select name="formaPagamento" [(ngModel)]="formaPagamentoId">
+                <mat-option
+                    *ngFor="let formaPagamento of formasPagamento"
+                    value="{{ formaPagamento.formaPagamentoId }}"
+                >
+                    {{ formaPagamento.nome }} - {{ formaPagamento.numParcelas }}x
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-card-content>
     <mat-card-header>
         <mat-card-title>
             Total: {{ valorTotal | currency: "BRL" }}
         </mat-card-title>
+        <button mat-raised-button color="warn" (click)="cadastrar()" style="margin-left: auto;">
+            Comprar
+        </button>
     </mat-card-header>
 </mat-card>
